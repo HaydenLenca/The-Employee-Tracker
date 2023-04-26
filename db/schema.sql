@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS compony_db;
-CREATE DATABASE compony_db;
+CREATE DATABASE company_db;
 
 USE compony_db;
 
@@ -13,7 +13,7 @@ CREATE TABLE department (
     department_name VARCHAR(30)
 );
 
-CREATE TABLE compony_role (
+CREATE TABLE company_role (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
     salary DECIMAL,

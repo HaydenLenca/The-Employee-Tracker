@@ -4,10 +4,10 @@ VALUES ('Sales', NULL, NULL ,NULL),
        ('HR', NULL, NULL ,NULL);
     --    deparment_id is same as the department id. read carfully
 
-INSERT INTO compony_role (title, salary, department_id)
-VALUES ('Making sales with the customer', 35,000.00, 1, NULL),
-       ('Working orders to be delivered to the customer', 20,000.00, 2, NULL),
-       ('Deals with any isues in sales or warhouse', 45,000.00, 3, NULL);
+INSERT INTO company_role (title, salary, department_id)
+VALUES ('Making sales with the customer', 35000, 1, NULL),
+       ('Working orders to be delivered to the customer', 20000, 2, NULL),
+       ('Deals with any isues in sales or warhouse', 45000, 3, NULL);
 
 -- manager id should be the id of employees
 -- also role_id is same as compony_role id 
