@@ -1,13 +1,13 @@
-INSERT INTO department (department_name)
-VALUES ('Sales', NULL, NULL ,NULL),
-       ('Warehouse', NULL, NULL ,NULL),
-       ('HR', NULL, NULL ,NULL);
+INSERT INTO department (name)
+VALUES ('Sales'),
+       ('Warehouse'),
+       ('HR');
     --    deparment_id is same as the department id. read carfully
 
-INSERT INTO company_role (title, salary, department_id)
-VALUES ('Making sales with the customer', 35000, 1, NULL),
-       ('Working orders to be delivered to the customer', 20000, 2, NULL),
-       ('Deals with any isues in sales or warhouse', 45000, 3, NULL);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Sales Lead', 35000, 1),
+       ('Loader Operator', 20000, 2),
+       ('HR Manager', 45000, 3);
 
 -- manager id should be the id of employees
 -- also role_id is same as compony_role id 
