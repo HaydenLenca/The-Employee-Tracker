@@ -12,6 +12,7 @@ VALUES ('Sales Lead', 35000, 1),
 -- manager id should be the id of employees
 -- also role_id is same as compony_role id 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('John', 'Doe', 1, NULL),
+VALUES ('John', 'Doe', 1, 2),
        ('Don', 'Sheperd', 2, NULL),
-       ('Sara', 'Johnson', 3, NULL);
+       ('Sara', 'Johnson', 3, NULL),
+       ('Joe', 'Dean', 4, 3);

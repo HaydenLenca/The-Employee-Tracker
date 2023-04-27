@@ -26,18 +26,17 @@ class dataBase {
         return this.myConnection.promise().query('INSERT INTO department SET ?', department);
     }
           
-// working on adding addRole
     addRole(role) {
         return this.myConnection.promise().query('INSERT INTO role SET ?', role);
     }
 
 
-    // addEmployee() {
-
-    // }
+    addEmployee(employee) {
+        return this.myConnection.promise().query('INSERT INTO employee SET ?', employee);
+    }
      
      
-    // apdateEmployee() {
+    // updateEmployee() {
 
     // }
 

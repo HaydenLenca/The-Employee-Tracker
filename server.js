@@ -104,7 +104,7 @@ function addDepartment() {
 }
 
 function addRole() {
-    db.addRole().then(([rows]) => {
+    db.veiwDepartment().then(([rows]) => {
         let departments = rows;
         const departmentChoices = departments.map(({ id, Departments }) => ({
             name: Departments,
@@ -112,7 +112,7 @@ function addRole() {
         }));
         inquirer.prompt([
             {
-                name: 'name',
+                name: 'title',
                 message: 'What is the name for the role?'
             },
             {
@@ -132,6 +132,76 @@ function addRole() {
         });
     });
 }
+
+function addEmployee() {
+    inquirer.prompt([
+        {
+            name: 'first_name',
+            message: 'What is the first name of the employee?'
+        },
+        {
+            name: 'last_name',
+            message: 'What is the last name of the employee?'
+        },
+    ]).then((res) => {
+        let firstName = res.first_name;
+        let lastName = res.last_name;
+
+        db.viewRole().then(([rows]) => {
+            let roles = rows;
+            const roleChoices = roles.map(({ id, role_id }) => ({
+                name: role_id,
+                value: id,
+            }));
+
+            inquirer.prompt({
+                type: 'list',
+                name: 'role_id',
+                message: 'what is the employees job title',
+                choices: roleChoices,
+            }).then((res) => {
+                let role_id = res.role_id;
+
+
+                // working to add employee
+                // working to add employee
+// working to add employee
+// working to add employee
+// error when entering role_id
+
+
+
+                
+                db.viewEmployee().then(([rows]) => {
+                    let manager = rows;
+                    const managerChoices = manager.map(({ id, first_name, last_name }) => ({
+                        name: first_name + '' + last_name,
+                        value: id,
+                    }));
+
+                    inquirer.prompt({
+                        type: 'list', 
+                        name: 'manager_id',
+                        message: 'Who is the employee manager?',
+                        choices: 'managerChoices',
+                    }).then((res) => {
+                        let employee = {
+                            manager_id: res.manager_id,
+                            role_id: roleId,
+                            first_name: firstName, 
+                            last_name: lastName,
+                        };
+
+                        db.addEmployee(employee)
+                          .then(() =>
+                          console.log(`added ${employee.first_name + '' + employee.last_name} to database.`))
+                          .then(() => firstOptions());
+                    });
+                });
+            });
+        });
+    });
+};
 
 
 init();
