@@ -49,7 +49,7 @@ const firstOptions = () => {
                 break;
             
             case 'update an employee role':
-                apdateEmployee();
+                updateEmployee();
                 break;
          
             case 'quit':
@@ -104,6 +104,7 @@ function addDepartment() {
 }
 
 function addRole() {
+
     db.veiwDepartment().then(([rows]) => {
         let departments = rows;
         const departmentChoices = departments.map(({ id, Departments }) => ({
@@ -160,22 +161,12 @@ function addEmployee() {
                 message: 'what is the employees job title',
                 choices: roleChoices,
             }).then((res) => {
-                let role_id = res.role_id;
+                let roleId = res.role_id;
 
-
-                // working to add employee
-                // working to add employee
-// working to add employee
-// working to add employee
-// error when entering role_id
-
-
-
-                
                 db.viewEmployee().then(([rows]) => {
                     let manager = rows;
                     const managerChoices = manager.map(({ id, first_name, last_name }) => ({
-                        name: first_name + '' + last_name,
+                        name: first_name + ' ' + last_name,
                         value: id,
                     }));
 
@@ -183,7 +174,7 @@ function addEmployee() {
                         type: 'list', 
                         name: 'manager_id',
                         message: 'Who is the employee manager?',
-                        choices: 'managerChoices',
+                        choices: managerChoices,
                     }).then((res) => {
                         let employee = {
                             manager_id: res.manager_id,
@@ -201,6 +192,51 @@ function addEmployee() {
             });
         });
     });
+};
+
+function updateEmployee() {
+
+    db.viewEmployee().then(([rows]) => {
+        let employeeName = rows; 
+        const employeeChoices = employeeName.map(({ id, first_name, last_name }) => ({
+            name: first_name + ' ' + last_name,
+            value: id,
+        }));
+
+        inquirer.prompt(
+            {
+                type: 'list',
+                name: 'name', 
+                massage: 'Which employee do you want to update?',
+                choices: employeeChoices,
+            })
+            .then((res) => {
+                let nameToUpdate = res.name;
+
+                db.viewRole().then(([rows]) => {
+                    let roles = rows;
+                    const roleChoices = roles.map(({ id, role_id }) => ({
+                        name: role_id,
+                        value: id,
+                    }));
+
+                    inquirer.prompt({
+                        type: 'list',
+                        name: 'role_id',
+                        message: 'What is the employees new role?',
+                        choices: roleChoices,
+                    })
+                    
+                    .then((res) => {
+                        let roleId = res.role_id;
+                           
+                            db.updateEmployee(nameToUpdate, roleId)
+                                .then(() => console.log(`Employee has been updated in the database.`))
+                                .then(() => firstOptions());
+                    });
+                });
+            });
+        });    
 };
 
 

@@ -36,9 +36,12 @@ class dataBase {
     }
      
      
-    // updateEmployee() {
-
-    // }
+    updateEmployee(employee, roleId) {
+        return this.myConnection.promise().query('UPDATE employee SET role_id = ? WHERE id = ?', [
+            roleId,
+            employee
+        ]);
+    }
 
 }
 
