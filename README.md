@@ -32,7 +32,7 @@
   You can also add all of those list items.
 
   ### Links
-  [Github](https://github.com/HaydenLenca/My-ReadMe-Generator) 
+  [Github](https://github.com/HaydenLenca/The-Employee-Tracker) 
   
   [Walkthrough Recording](https://drive.google.com/file/d/12aukrffNj9JlsFM1UhYtok8kyC6Ms7Ja/view)
 
