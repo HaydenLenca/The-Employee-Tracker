@@ -1,3 +1,4 @@
+-- basic list info
 INSERT INTO department (name)
 VALUES ('Sales'),
        ('Warehouse'),

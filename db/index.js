@@ -1,8 +1,6 @@
 const myConnection = require('./myConnection');
 
-
-
-
+// list to update database
 class dataBase {
     constructor(myConnection) {
         this.myConnection = myConnection;

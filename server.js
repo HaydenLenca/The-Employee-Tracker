@@ -1,12 +1,12 @@
 const inquirer = require('inquirer');
-// const mysql = require('mysql');
 const db = require('./db/index');
-// require('console.table');
 
+// adding function to populate menu
 function init() {
     firstOptions();
 }
 
+// menu layout
 const firstOptions = () => {
     inquirer.prompt({
         type: 'list',
@@ -22,6 +22,8 @@ const firstOptions = () => {
             'update an employee role',
             'quit'
         ],
+
+        // linking functions to list
     }).then(function (userInput) {
         switch (userInput.firstOptions) {
             case 'view all departments':
@@ -63,6 +65,7 @@ function quit() {
     process.exit();
 }
 
+// functons to bring up info tables
 function viewDeparment() {
     db.veiwDepartment()
       .then(([rows]) => {
@@ -90,6 +93,7 @@ function viewEmployee() {
               .then(() => firstOptions());
 }
 
+// function to add department 
 function addDepartment() {
     inquirer.prompt([
         {
@@ -103,6 +107,7 @@ function addDepartment() {
     });
 }
 
+// function to add role 
 function addRole() {
 
     db.veiwDepartment().then(([rows]) => {
@@ -134,6 +139,7 @@ function addRole() {
     });
 }
 
+// function to add emplpyee
 function addEmployee() {
     inquirer.prompt([
         {
@@ -194,6 +200,7 @@ function addEmployee() {
     });
 };
 
+// function to update employee
 function updateEmployee() {
 
     db.viewEmployee().then(([rows]) => {
